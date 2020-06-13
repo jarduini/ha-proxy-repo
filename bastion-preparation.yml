@@ -1,0 +1,6 @@
+---
+- hosts: bastion
+  vars_files:
+    - vars/global.yml
+  roles:
+    - bastion

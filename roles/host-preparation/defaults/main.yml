@@ -1,0 +1,14 @@
+---
+rhsm_repos:
+  - rhel-7-server-rpms
+  - rhel-7-server-extras-rpms
+
+
+yum_packages:
+  - wget
+  - net-tools
+  - bind-utils
+  - yum-utils
+  - bash-completion
+  - sos
+  - haproxy

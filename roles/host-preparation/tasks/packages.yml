@@ -1,0 +1,5 @@
+---
+- name: Ensure all required packages are installed
+  package:
+    name: "{{ yum_packages }}"
+    state: present

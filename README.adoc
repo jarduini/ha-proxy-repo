@@ -1,0 +1,58 @@
+= HA Proxy
+
+Deploy HA Proxy on a VM.
+
+== Requirements
+
+Create Inventory file on inventory directory.
+
+Example:
+
+[source,yaml]
+----
+include::inventory/inventory[]
+----
+
+Modify global vars on `+vars/global.yaml+` as needed
+
+Example:
+[source,yaml]
+----
+include::vars/global.yml[]
+----
+
+Create vault file on `+vars/vault.yml+`
+----
+$ ansible-vault create vars/vault.yml
+----
+With content:
+[source,yaml]
+----
+# Account for rhel subscription
+activation_key: xxx
+organization_id: xxx
+
+# or User for rhel subscription
+rhel_subscription_user: xxx
+rhel_subscription_pass: xxx
+----
+
+== Bastion Preparation
+----
+ansible-playbook -i inventory/inventory bastion-preparation.yml -e @vars/vault.yml --ask-vault-pass
+----
+
+== HA Proxy prereqs:
+----
+ansible-playbook -i inventory/inventory host-preparation.yml -e @vars/vault.yml --ask-vault-pass
+----
+
+== HA Proxy Deployment:
+----
+ansible-playbook -i inventory/inventory haproxy-deploy.yml
+----
+
+== References
+- http://cbonte.github.io/haproxy-dconv/1.8/configuration.html
+- https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/load_balancer_administration/install_haproxy_example1
+- https://github.com/geerlingguy/ansible-role-haproxy
