@@ -6,7 +6,7 @@
     password: "{{ rhel_subscription_pass }}"
     auto_attach: true
   ignore_errors: yes
-  
+
 - name: Disable all RHSM repositories
   rhsm_repository:
     name: '*'
@@ -17,3 +17,4 @@
   rhsm_repository:
     name: "{{ rhsm_repos }}"
     state: enabled
+ ignore_errors: yes
