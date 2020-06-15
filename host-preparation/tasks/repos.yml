@@ -5,7 +5,7 @@
     username: "{{ rhel_subscription_user }}"
     password: "{{ rhel_subscription_pass }}"
     auto_attach: true
-  when: (rhel_subscription_user is defined) and (rhel_subscription_pass is defined) and (foo|length > 0)
+  when: ({{rhel_subscription_user}} is defined) and ({{rhel_subscription_pass}} is defined) and ({{rhel_subscription_pass}}|length > 0 and ({{rhel_subscription_user}}|length > 0)
 
 - name: Register Machine on Redhat and auto-subscribe to available content.
   redhat_subscription:
@@ -14,7 +14,7 @@
     org_id: "{{ organization_id }}"
     auto_attach: true
   #  pool_ids: 'xx'
-  when: (activation_key is defined) and (organization_id is defined)
+  when: ({{activation_key}} is defined) and ({{organization_id}} is defined) and ({{activation_key}}|length > 0 and ({{organization_id}}|length > 0)
 
 - name: Disable all RHSM repositories
   rhsm_repository:
