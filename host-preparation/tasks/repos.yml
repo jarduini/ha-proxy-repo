@@ -5,7 +5,8 @@
     username: "{{ rhel_subscription_user }}"
     password: "{{ rhel_subscription_pass }}"
     auto_attach: true
-  when: ("{{ rhel_subscription_user }}" | length > 0)
+  ignore_errors: yes
+#  when: ("{{ rhel_subscription_user }}" | length > 0)
 
 # - name: Register Machine on Redhat and auto-subscribe to available content.
 #   redhat_subscription:
