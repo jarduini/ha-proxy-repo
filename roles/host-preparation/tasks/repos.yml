@@ -17,4 +17,4 @@
   rhsm_repository:
     name: "{{ rhsm_repos }}"
     state: enabled
- ignore_errors: yes
+  ignore_errors: yes
