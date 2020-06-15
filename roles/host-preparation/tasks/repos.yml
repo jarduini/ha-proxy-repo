@@ -1,9 +1,17 @@
 ---
-- name: Register Machine on Redhat and auto-subscribe to available content.
+- name: Register Machine with redhat_subscription user on Redhat and auto-subscribe to available content.
   redhat_subscription:
     state: present
     username: "{{ rhel_subscription_user }}"
     password: "{{ rhel_subscription_pass }}"
+    auto_attach: true
+  ignore_errors: yes
+
+- name: Register Machine with activationkey on Redhat and auto-subscribe to available content.
+  redhat_subscription:
+    state: present
+    activationkey: "{{ activation_key }}"
+    org_id: "{{ organization_id }}"
     auto_attach: true
   ignore_errors: yes
 
