@@ -1,7 +1,0 @@
-----
-- git:
-    repo: 'https://github.com/jarduini/ha-proxy-repo.git'
-    dest: ~/
-    clone: yes
-    update: yes
-    version: master
